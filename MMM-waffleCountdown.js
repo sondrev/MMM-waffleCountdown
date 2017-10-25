@@ -1,6 +1,6 @@
 
 let dayOfWeek = 1; // 1 for monday
-let timeOfDay = 16; //END time
+let timeOfDay = 13; //END time
 
 let pad = function(value) {
   if (value<10) return '0'+value; else return value
@@ -89,14 +89,14 @@ Module.register("MMM-waffleCountdown", {
             headerD.innerHTML = "Waffles in:" + "<br/><br />";
             headerD.className = "doooom";
             var timeLeft = document.createElement("span")
-            timeLeft.innerHTML = pad(hoursLeft-2) + ':' + pad(minsLeft % 60) + ':' + pad(secsLeft % 60)
+            timeLeft.innerHTML = pad((hoursLeft)%24) + ':' + pad(minsLeft % 60) + ':' + pad(secsLeft % 60)
             timeLeft.className = "timeLeft";
           }
         } else {
             headerD.innerHTML = "Waffles in:" + "<br/><br/>";
             headerD.className = "doooom";
             var timeLeft = document.createElement("span")
-            timeLeft.innerHTML = pad(daysLeft-2) + ':' + pad((hoursLeft-2)%24) + ':' + pad(minsLeft % 60) + ':' + pad(secsLeft % 60)
+            timeLeft.innerHTML = pad(daysLeft) + ':' + pad(hoursLeft % 24) + ':' + pad(minsLeft % 60) + ':' + pad(secsLeft % 60)
             timeLeft.className = "timeLeft";
         }
 
