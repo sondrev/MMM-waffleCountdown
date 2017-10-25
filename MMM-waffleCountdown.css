@@ -1,0 +1,29 @@
+@font-face {
+  font-family: 'clock';
+  src: url(./alarm_clock.ttf);
+}
+
+.loadingBar {
+  width: 100%;
+  height: 30px;
+  background-color: #4CAF50;
+  line-height: 30px;
+  color:white;
+}
+
+.timeLeft {
+  font-family: "clock";
+  Font-size: 120px;
+  color: #c3bf42;
+}
+
+.timeEnded {
+  Font-size: 80x;
+  color: grey;
+}
+
+
+.doooom {
+  font-size: 80px;
+  color: white;
+}
