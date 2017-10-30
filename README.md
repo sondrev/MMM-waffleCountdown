@@ -1,4 +1,4 @@
-# MMM-doomsDay
+# MMM-waffleCountdown
 
 This module for the [MagicMirror](https://github.com/MichMich/MagicMirror) shows the time left until waffleMondays
 
