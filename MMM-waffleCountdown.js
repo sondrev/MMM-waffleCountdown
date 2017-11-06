@@ -1,6 +1,6 @@
-
 let dayOfWeek = 1; // 1 for monday
 let timeOfDay = 14; //star time.
+let minuteOfDay = 0; //star time.
 
 let overlayIsOn=false
 let globalOverlay=undefined
@@ -11,6 +11,13 @@ let overlayOn = function() {
   var overlayBlack = document.getElementById("overlayBlack");
   if (overlayBlack!==undefined) {
     overlayBlack.innerHTML = "<div class=\"black_overlay\"></div>";
+  }
+}
+
+let overlayOn2 = function(inner) {
+  var overlayBlack = document.getElementById("overlayBlack");
+  if (overlayBlack!==undefined) {
+    overlayBlack.innerHTML = "<div class=\"Aligner\"><div class=\"Aligner-item\">"+inner+"</div></div>";
   }
 }
 
@@ -58,13 +65,13 @@ let displayWaffleCountdownBig = function(timeLeft) {
   timer.innerHTML = pad(timeLeft.days) + ':' + pad(timeLeft.hours % 24) + ':' + pad(timeLeft.mins % 60) + ':' + pad(timeLeft.secs % 60)
   timer.className = "timeLeftBig";
 
-  wrapper.appendChild(headerD);
-  wrapper.appendChild(timer);
+  //wrapper.appendChild(headerD);
+  //wrapper.appendChild(timer);
+  overlayOn2("<div class=\"timeLeftBig2\">"+timer.innerHTML+"</div>")
   return wrapper;
 }
 
 let displayWaffleFullscreen = function(timeLeft) {
-  overlayOn()
   var wrapper = document.createElement("div");
   var headerD = document.createElement("span");
   headerD.innerHTML = "Waffle ready!";
@@ -94,8 +101,9 @@ let displayWaffleFullscreen = function(timeLeft) {
     }
     headerD.innerHTML += loadingBar
   }
-  wrapper.appendChild(headerD);
-  wrapper.appendChild(span);
+  //wrapper.appendChild(headerD);
+  //wrapper.appendChild(span);
+  overlayOn2("<div class=\"fullscreenApp2\">"+headerD.innerHTML+"</div>")
   return wrapper;
 
 }
@@ -134,7 +142,7 @@ Module.register("MMM-waffleCountdown", {
         }
 
         startDate.setHours(timeOfDay)
-        startDate.setMinutes(0)
+        startDate.setMinutes(minuteOfDay)
         startDate.setSeconds(0)
 
         var timeparser = Date.parse(startDate) - Date.parse(nowDate);
@@ -154,7 +162,7 @@ Module.register("MMM-waffleCountdown", {
           return displayWaffleFullscreen(timeLeft);
         } else if (timeLeft.days<=0 && timeLeft.secs<=10) {
           return displayWaffleCountdownBig(timeLeft);
-        }else {
+        } else {
           return displayWaffleCountdown(timeLeft);
         }
 
