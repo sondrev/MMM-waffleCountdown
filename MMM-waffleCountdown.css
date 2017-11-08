@@ -9,34 +9,14 @@
   color: #c3bf42;
 }
 
-.timeLeftBig {
-  position: relative;
-  bottom: 600px;
-  left: 0%;
-  font-family: "clock";
-  Font-size: 200px;
-  color: #c3bf42;
-  z-index: 3;
-}
-
 .timeLeftBig2 {
   position: relative;
   font-family: "clock";
-  Font-size: 160px;
+  Font-size: 130px;
   color: #c3bf42;
   z-index: 3;
 }
 
-.fullscreenApp {
-  position: relative;
-  bottom: 600px;
-  left: 0%;
-
-  font-size: 80px;
-  color: white;
-  z-index: 3;
-
-}
 
 .fullscreenApp2 {
   position: relative;
