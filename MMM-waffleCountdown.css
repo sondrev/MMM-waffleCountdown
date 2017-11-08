@@ -9,7 +9,7 @@
   color: #c3bf42;
 }
 
-.timeLeftBig2 {
+.timeLeftBig {
   position: relative;
   font-family: "clock";
   Font-size: 130px;
@@ -18,7 +18,7 @@
 }
 
 
-.fullscreenApp2 {
+.fullscreenApp {
   position: relative;
   font-size: 80px;
   color: white;
@@ -32,16 +32,6 @@
   color: white;
   z-index: 3;
 }
-
-.black_overlay {
-  position: fixed;
-  z-index: 2;
-  background-color: rgba(0, 0, 0, 1);
-  width: 100%;
-  height: 100%;
-}
-
-
 
 .Aligner {
   position: fixed;

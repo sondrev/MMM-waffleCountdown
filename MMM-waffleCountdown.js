@@ -2,8 +2,8 @@
 Module.register("MMM-waffleCountdown", {
 
     defaults: {
-      dayOfWeek: 1, // 1 for monday
-      timeOfDay: 14,
+      dayOfWeek: 3, // 1 for monday
+      timeOfDay: 11,
       minuteOfDay: 0
     },
 
@@ -52,36 +52,27 @@ Module.register("MMM-waffleCountdown", {
     },
 
     displayWaffleCountdownBig: function(timeLeft) {
-      var wrapper = document.createElement("div");
-      var headerD = document.createElement("span");
-      var timer = document.createElement("span");
-
       timer.innerHTML = this.padTime(timeLeft.days) + ':' + this.padTime(timeLeft.hours % 24) + ':' + this.padTime(timeLeft.mins % 60) + ':' + this.padTime(timeLeft.secs % 60)
       timer.className = "timeLeftBig";
 
-      //wrapper.appendChild(headerD);
-      //wrapper.appendChild(timer);
-      this.waffleOverlayUpdate("<div class=\"timeLeftBig2\">"+timer.innerHTML+"</div>")
-      return wrapper;
+      this.waffleOverlayUpdate("<div class=\"timeLeftBig\">"+timer.innerHTML+"</div>")
+      return document.createElement("div"); //return empty div
     },
 
     displayWaffleFullscreen: function(timeLeft) {
-      var wrapper = document.createElement("div");
-      var headerD = document.createElement("span");
-      headerD.innerHTML = "Waffle ready!";
       var span = document.createElement("span");
+      span.innerHTML = "Waffle ready!";
       var barLength=20
       var stekeTid=200 //2:50
       var venteTid=50 //20sec
       var totaltTid=stekeTid+venteTid
       let now = new Date()
       var deltaTime = Math.floor((now.getTime() - timeLeft.startTime)/1000)
-      //var deltaTime=(timeLeft.startTime - Math.floor(now.getTime() / 1000))
       var loadingTimeNow = (deltaTime) % totaltTid
 
 
       if (loadingTimeNow<stekeTid) {
-        headerD.innerHTML = "Loading waffle:" + "<br/><br />";
+        span.innerHTML = "Loading waffle:" + "<br/><br />";
         var steps=Math.round(barLength*(loadingTimeNow/stekeTid))
         var unfinished=barLength
         var loadingBar = ""
@@ -92,11 +83,11 @@ Module.register("MMM-waffleCountdown", {
         for (var i=0;i<unfinished;i++) {
           loadingBar+='_'
         }
-        headerD.innerHTML += loadingBar
+        span.innerHTML += loadingBar
       }
 
-      this.waffleOverlayUpdate("<div class=\"fullscreenApp2\">"+headerD.innerHTML+"</div>")
-      return wrapper;
+      this.waffleOverlayUpdate("<div class=\"fullscreenApp\">"+span.innerHTML+"</div>")
+      return document.createElement("div");
 
     },
 
