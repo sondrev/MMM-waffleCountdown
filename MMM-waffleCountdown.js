@@ -2,8 +2,8 @@
 Module.register("MMM-waffleCountdown", {
 
     defaults: {
-      dayOfWeek: 3, // 1 for monday
-      timeOfDay: 11,
+      dayOfWeek: 1, // 1 for monday
+      timeOfDay: 14,
       minuteOfDay: 0
     },
 
