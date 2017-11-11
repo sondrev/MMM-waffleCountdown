@@ -3,6 +3,19 @@
   src: url(./alarm_clock.ttf);
 }
 
+#myProgress {
+    width: 800px;
+    background-color: grey;
+}
+#myBar {
+    width: 1%;
+    height: 50px;
+    background-color: green;
+    line-height: 50px; /* To center it vertically */
+    color: white;
+    font-size: 40px;
+}
+
 .timeLeft {
   font-family: "clock";
   Font-size: 120px;
@@ -22,8 +35,14 @@
   position: relative;
   font-size: 80px;
   color: white;
+  align-items: center;
   z-index: 3;
+}
 
+.fullscreenAppDiv {
+  text-align: center;
+  margin-top:50px;
+  margin-bottom:50px;
 }
 
 .text {

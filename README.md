@@ -15,7 +15,12 @@ git clone https://github.com/sondrev/MMM-waffleCountdown.git # clone this reposi
 
 ````javascript
 {
-      module: 'MMM-waffleCountdown',
-      position: 'lower_third', // This can be any of the regions, best results in center regions
+        module: 'MMM-waffleCountdown',
+        position: "bottom_bar",
+        config: {
+                dayOfWeek: 1, //1 for mondays
+                timeOfDay: 14,
+                minuteOfDay: 0,
+        },
 },
 ````

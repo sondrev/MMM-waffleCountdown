@@ -52,6 +52,7 @@ Module.register("MMM-waffleCountdown", {
     },
 
     displayWaffleCountdownBig: function(timeLeft) {
+      var timer = document.createElement("span");
       timer.innerHTML = this.padTime(timeLeft.days) + ':' + this.padTime(timeLeft.hours % 24) + ':' + this.padTime(timeLeft.mins % 60) + ':' + this.padTime(timeLeft.secs % 60)
       timer.className = "timeLeftBig";
 
@@ -60,8 +61,14 @@ Module.register("MMM-waffleCountdown", {
     },
 
     displayWaffleFullscreen: function(timeLeft) {
-      var span = document.createElement("span");
-      span.innerHTML = "Waffle ready!";
+      var span = document.createElement("div");
+      var span1 = document.createElement("div");
+      var span2 = document.createElement("div");
+      span1.className="fullscreenAppDiv";
+      span2.className="fullscreenAppDiv";
+
+
+      span1.innerHTML = "Waffle ready!";
       var barLength=20
       var stekeTid=200 //2:50
       var venteTid=50 //20sec
@@ -72,20 +79,16 @@ Module.register("MMM-waffleCountdown", {
 
 
       if (loadingTimeNow<stekeTid) {
-        span.innerHTML = "Loading waffle:" + "<br/><br />";
-        var steps=Math.round(barLength*(loadingTimeNow/stekeTid))
-        var unfinished=barLength
-        var loadingBar = ""
-        for (var i=0;i<steps;i++) {
-          loadingBar+='#'
-          unfinished-=1
-        }
-        for (var i=0;i<unfinished;i++) {
-          loadingBar+='_'
-        }
-        span.innerHTML += loadingBar
-      }
+        span1.innerHTML = "Loading waffle:";
 
+        var percent = Math.floor(100*(loadingTimeNow/stekeTid))
+        var textInsideBar = "" + (stekeTid-loadingTimeNow) + "s"
+
+        span2.innerHTML= "<div id=\"myProgress\"><div id=\"myBar\" style=\"width: "+percent+"%\">"+textInsideBar+"</div></div>"
+
+      }
+      span.appendChild(span1);
+      span.appendChild(span2);
       this.waffleOverlayUpdate("<div class=\"fullscreenApp\">"+span.innerHTML+"</div>")
       return document.createElement("div");
 
@@ -110,16 +113,23 @@ Module.register("MMM-waffleCountdown", {
         return ["MMM-waffleCountdown.css"];
     },
 
+    getNextWekkday(currentDate,wantedDayOfWeek) {
+      if (currentDate.getDay()==wantedDayOfWeek) {
+        return currentDate
+      } else {
+        const tomorrow= new Date(currentDate.getTime());
+        tomorrow.setDate(tomorrow.getDate()+1)
+        return this.getNextWekkday(tomorrow,wantedDayOfWeek)
+      }
+    },
+
     getDom: function() {
 
         var nowDate = new Date();
         var startDate = new Date();
-        if (startDate.getDay()!=this.config.dayOfWeek) {
-          startDate.setDate(startDate.getDate() + (7+this.config.dayOfWeek-startDate.getDay()%7)  );
-        } else {
-          startDate.setDate(startDate.getDate());
-        }
+        var startDateT = this.getNextWekkday(nowDate,this.config.dayOfWeek)
 
+        startDate.setDate(startDateT.getDate())
         startDate.setHours(this.config.timeOfDay)
         startDate.setMinutes(this.config.minuteOfDay)
         startDate.setSeconds(0)
