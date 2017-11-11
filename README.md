@@ -18,7 +18,7 @@ git clone https://github.com/sondrev/MMM-waffleCountdown.git # clone this reposi
         module: 'MMM-waffleCountdown',
         position: "bottom_bar",
         config: {
-                dayOfWeek: 1, //1 for mondays
+                dayOfWeek: 1,  //1 for mondays
                 timeOfDay: 14,
                 minuteOfDay: 0,
         },

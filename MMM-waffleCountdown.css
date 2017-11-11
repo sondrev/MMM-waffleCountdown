@@ -4,7 +4,7 @@
 }
 
 #myProgress {
-    width: 800px;
+    width: 600px;
     background-color: grey;
 }
 #myBar {
@@ -37,6 +37,7 @@
   color: white;
   align-items: center;
   z-index: 3;
+  text-align: center;
 }
 
 .fullscreenAppDiv {
@@ -66,13 +67,5 @@
 }
 
 .Aligner-item {
-  max-width: 50%;
-}
 
-.Aligner-item--top {
-  align-self: flex-start;
-}
-
-.Aligner-item--bottom {
-  align-self: flex-end;
 }
